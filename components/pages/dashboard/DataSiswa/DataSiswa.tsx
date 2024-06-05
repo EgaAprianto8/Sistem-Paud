@@ -1,10 +1,7 @@
-// app/dashboard/datasiswa/page.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
 import InputDataSiswa from "@/components/button/InputDataSiswa";
 
 const DataSiswa = () => {
@@ -23,7 +20,7 @@ const DataSiswa = () => {
   };
 
   const fetchClasses = async () => {
-    const response = await axios.get("/api/kelas"); // assuming you have a similar API endpoint for classes
+    const response = await axios.get("/api/kelas");
     setClasses(response.data);
   };
 
@@ -107,31 +104,37 @@ const DataSiswa = () => {
           </select>
           <button type="submit">{form.id ? "Update" : "Create"}</button>
         </form>
-          <div>
-           <InputDataSiswa/>
-          </div>
+        <div>
+          <InputDataSiswa />
+        </div>
       </div>
-      <table className="w-full table-auto border-collapse mt-5">
-        <thead>
-          <tr>
-            <th>Nama Siswa</th>
-            <th>Kelas</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((student: any) => (
-            <tr key={student.id}>
-              <td>{student.nama_siswa}</td>
-              <td>{student.kelas?.nama_kelas}</td>
-              <td>
-                <button onClick={() => handleEdit(student)}>Edit</button>
-                <button onClick={() => handleDelete(student.id)}>Delete</button>
-              </td>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">Nama Siswa</th>
+              <th scope="col" className="px-6 py-3">Kelas</th>
+              <th scope="col" className="px-6 py-3">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {students.map((student: any) => (
+              <tr key={student.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {student.nama_siswa}
+                </th>
+                <td className="px-6 py-4">
+                  {student.kelas?.nama_kelas}
+                </td>
+                <td className="px-6 py-4">
+                  <button onClick={() => handleEdit(student)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                  <button onClick={() => handleDelete(student.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

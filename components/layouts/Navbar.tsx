@@ -23,17 +23,17 @@ const Navbar = () => {
       <div className="flex flex-col bg-[#ffff] w-full h-max-[200px] py-2">
         <div className="p-2 flex flex-row justify-between border-b gap-4 lg:px-10">
           <Link href="/" className="my-auto flex-row flex gap-4">
-            <div className="relative  w-[50px] h-[50px]">
+            <div className="relative  w-[50px] h-[50px] bg-black rounded-full ">
               <Image
                 src="/images/logoSistem.png"
                 alt="logo"
                 fill={true}
-                className="object-cover w-[50px] h-[50px]"
+                className="object-cover w-[50px] h-[50px] p-2"
               />
             </div>
             <div className="lg:flex my-auto hidden">
               <h1 className="font-black text-xl text-[#1a1668]">
-                Media Nusa Gemilang
+              Sistem Informasi PAUD Bani Ruqoyah
               </h1>
             </div>
           </Link>

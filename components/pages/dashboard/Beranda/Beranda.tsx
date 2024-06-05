@@ -16,29 +16,22 @@ function Beranda() {
 
         <h2 className="text-center mt-5 font-bold">Nama Admin</h2>
 
-        <div className="mt-12 mb-12 grid grid-cols-2 gap-12 py-4 px-8 text-lg">
+        <div className="mt-12 mb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 px-8 text-lg w-full">
           <Button
             variant="outline"
-            className="py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
-          >
-            Profile
-          </Button>
-
-          <Button
-            variant="outline"
-            className="py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
-          >
-            Progres Harian
-          </Button>
-          <Button
-            variant="outline"
-            className="py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
+            className="py-12 px-8 sm:px-12 lg:px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
           >
             Data Siswa
           </Button>
           <Button
             variant="outline"
-            className="py-12 px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
+            className="py-12 px-8 sm:px-12 lg:px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
+          >
+            Progres Harian
+          </Button>
+          <Button
+            variant="outline"
+            className="py-12 px-8 sm:px-12 lg:px-28 text-lg hover:bg-[#f5e0ff] hover:text-[#9B52BD] border border-black"
           >
             Rapot Semester
           </Button>
