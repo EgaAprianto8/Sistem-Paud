@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import { redirect } from 'next/navigation';
+import Beranda from '@/components/pages/dashboard/Beranda/Beranda';
 
 export const metadata: Metadata = {
     title: 'Admin Dashboard | Perpustakaan',
@@ -10,5 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default function page() {
-  redirect('/dashboard/data-buku')
+  return(
+    <>
+    <Beranda/>
+    </>
+  )
 }
