@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div className="absolute h-full top-0 left-0 right-0 bottom-0 bg-black/50 -z-[1]" />
       <div className="w-full px-4 sm:px-10 xl:container space-y-6">
         <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold max-w-[765px]">
-          Media Nusa Gemilang
+        Sistem Informasi PAUD Bani Ruqoyah
         </h1>
         <h3 className="text-white text-base md:text-lg lg:text-2xl font-bold">
           Menyediakan Berbagai Kebutuhan Pendidikan

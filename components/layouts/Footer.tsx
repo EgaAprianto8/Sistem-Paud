@@ -11,13 +11,13 @@ const Footer = () => {
           <div className="w-full h-auto px-4 py-6 lg:pt-8">
               <div className="flex flex-wrap justify-center sm:flex sm:justify-between">
                 <div className="mb-6 md:mb-0">
-                    <div className="flex items-center">
+                    <div className="flex items-center bg-black justify-center rounded-full sm:p-2">
                         <Image
                             src="/images/logoSistem.png"
                             width={100}
                             height={100}
                             alt="Logo Company"
-                            className="sm:ml-8 mr-8 sm:mr-3"
+                            className="p-2"
                         />
                     </div>
                 </div>
