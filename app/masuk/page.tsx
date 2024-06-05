@@ -5,12 +5,26 @@ import { useEffect, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import axios from 'axios';
 
-function BuatAkun() {
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+async function BuatAkun() {
     const [userName, setUserName] = useState('');
     const [userPw, setUserPw] = useState('');
     const [akun, setAkun] = useState([]);
     const router = useRouter();
     const { toast } = useToast();
+
+    if (akun.length == 0) {
+        const user = await prisma.users.create({
+            data: {
+                id: 1,
+                username: 'admin',
+                email: 'admin@admin.org',
+                password: '123admin',
+            },
+        });
+    }
 
     useEffect(() => {
         fetchAkun();
