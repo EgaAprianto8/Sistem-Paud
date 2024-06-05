@@ -3,35 +3,30 @@
 import { redirect, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
+import axios from 'axios';
 
 function BuatAkun() {
     const [userName, setUserName] = useState('');
     const [userPw, setUserPw] = useState('');
+    const [akun, setAkun] = useState([]);
     const router = useRouter();
     const { toast } = useToast();
 
     useEffect(() => {
-        // Buat akun admin jika belum ada
-        if (typeof window !== 'undefined') {
-            if (!localStorage.getItem('adminName') || !localStorage.getItem('adminPw')) {
-                localStorage.setItem('sudahMasuk', 'false');
-                localStorage.setItem('adminName', 'admin');
-                localStorage.setItem('adminPw', 'admin123');
-            }
-            if (localStorage.getItem('sudahMasuk') === 'true') {
-                redirect('/dashboard');
-            }
-        }
+        fetchAkun();
     }, []);
+
+    const fetchAkun = async () => {
+        const response = await axios.get('/api/akun');
+        setAkun(response.data);
+    };
 
     const handleLogin = () => {
         if (typeof window !== 'undefined') {
-            const storedName = localStorage.getItem('name');
-            const storedPw = localStorage.getItem('pw');
-            const adminName = localStorage.getItem('adminName');
-            const adminPw = localStorage.getItem('adminPw');
+            const adminName = akun[0]['username'];
+            const adminPw = akun[0]['password'];
 
-            if ((userName === storedName && userPw === storedPw) || (userName === adminName && userPw === adminPw)) {
+            if (userName === adminName && userPw === adminPw) {
                 localStorage.setItem('sudahMasuk', 'true');
                 router.push('/dashboard');
             } else {
@@ -50,13 +45,16 @@ function BuatAkun() {
                 <div className="space-y-6">
                     <h5 className="text-xl font-medium text-form-input dark:text-white">Login</h5>
                     <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-form-input dark:text-white">
+                        <label
+                            htmlFor="username"
+                            className="block mb-2 text-sm font-medium text-form-input dark:text-white"
+                        >
                             Masukan Username
                         </label>
                         <input
                             type="text"
                             value={userName}
-                            id="email"
+                            id="username"
                             className="bg-gray-50 border border-gray-300 text-form-input text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="Masukan Nama"
                             onChange={(e) => setUserName(e.target.value)}
@@ -83,7 +81,7 @@ function BuatAkun() {
                     <button
                         type="submit"
                         onClick={handleLogin}
-                        className="w-full text-black bg-[#3C50E0] hover:bg-[#2a3371] focus:ring-4 focus:outline-none focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white"
+                        className="w-full bg-[#3C50E0] hover:bg-[#2a3371] focus:ring-4 focus:outline-none focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2.5 text-center text-white"
                     >
                         Login
                     </button>
