@@ -88,6 +88,7 @@ const DataSiswa = () => {
             required
           />
           <select
+          title="kelas"
             name="kelasID"
             value={form.kelasID}
             onChange={handleChange}
@@ -127,8 +128,8 @@ const DataSiswa = () => {
                   {student.kelas?.nama_kelas}
                 </td>
                 <td className="px-6 py-4">
-                  <button onClick={() => handleEdit(student)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
-                  <button onClick={() => handleDelete(student.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>
+                  <button onClick={() => handleEdit(student)} className="font-medium text-[#49a2fb] dark:text-blue-500 hover:underline">Edit</button>
+                  <button onClick={() => handleDelete(student.id)} className="font-medium text-[#e44f4f] dark:text-red-500 hover:underline ml-2">Delete</button>
                 </td>
               </tr>
             ))}

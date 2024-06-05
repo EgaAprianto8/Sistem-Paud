@@ -1,11 +1,11 @@
 import IndikatorNilai from '@/components/pages/dashboard/IndikatorNilai/IndikatorNilai'
-import MenuProgress from '@/components/pages/dashboard/progress/MenuProgress'
+import InputRapotSemester from '@/components/pages/dashboard/RapotSemester/InputRapotSemester'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <MenuProgress/>
+      <InputRapotSemester/>
     </div>
   )
 }
